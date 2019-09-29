@@ -1,0 +1,24 @@
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.logo-container{
+  width: 500px;
+  height: 500px;
+  margin-right: 100px;
+  background: url(http://cdn.algbb.cn/study/banner/4.svg) no-repeat center center;
+  background-size: contain;
+}
+
+.form-container{
+  width: 500px;
+  padding: 50px 50px 25px 50px;
+  border: #333 1px solid;
+  border-radius: 16px;
+  background: #fff;
+}
