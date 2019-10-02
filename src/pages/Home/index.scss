@@ -1,0 +1,22 @@
+.layout {
+  background: #fff;
+
+  &-collapsed {
+    margin-left: 80px;
+  }
+
+  &-unfold {
+    margin-left: 200px;
+  }
+}
+
+.slider {
+  overflow-y: auto;
+  position: fixed;
+  height: 100%;
+  background: #fff;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}

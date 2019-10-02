@@ -1,0 +1,51 @@
+.nav {
+  &-container {
+    padding: 10px 10px 30px 10px;
+    background-image: linear-gradient(to bottom, #dfe9f3 0%, white 100%);
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    height: 60px;
+    font-size: 22px;
+    font-weight: bold;
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 80px;
+      height: 80px;
+      margin: 10px 0;
+      border-radius: 50%;
+    }
+
+    .nickname{
+      color: #333;
+      font-weight: bold;
+    }
+
+    .description{
+      color: #666;
+    }
+  }
+}
+
+.logo{
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+}
