@@ -21,6 +21,7 @@
     "no-extra-boolean-cast": 0,
     "class-methods-use-this": "off",
     "semi": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "react/no-array-index-key":0
   }
 }
