@@ -1,11 +1,16 @@
 import LoadableComponent from '../components/LoadableComponent'
+import Index from './Index/index'
 
-const Home = LoadableComponent(() => import('./Home'))
 const Login = LoadableComponent(() => import('./Login'))
 const Register = LoadableComponent(() => import('./Register'))
 
+const DashBoard = LoadableComponent(() => import('./DashBoard'))
+
 export {
-  Home,
+  Index,
+
   Login,
   Register,
+
+  DashBoard,
 }

@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom'
 
 import PrivateRoute from '../components/PrivateRoute'
-import { Login, Register, Home } from '../pages'
+import { Login, Register, Index } from '../pages'
 
 
 const Routes = () => (
@@ -12,9 +12,9 @@ const Routes = () => (
     <Route exact path="/login" component={Login} />
     <Route exact path="/register" component={Register} />
 
-    <PrivateRoute exact path="/home" component={Home} />
+    <PrivateRoute path="/index" component={Index} />
 
-    <Redirect exact from="/" to="/home" />
+    <Redirect exact from="/" to="/index" />
   </Switch>
 )
 

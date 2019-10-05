@@ -26,28 +26,30 @@ class LoginForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { form } = this.props
+    const { form, history } = this.props
     form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const {
-          school: { label }, type, username, password, remember,
+          school: { key }, type, username, password, remember,
         } = values
 
         /* 验证登录信息 */
         this.validateLogin({
-          label, type, username, password,
+          key, type, username, password,
         })
 
         if (remember) {
           /* 设置cookie */
           authenticateSuccess(username)
         }
+
+        history.push('/index')
       }
     });
   };
 
-  validateLogin=(params = {}) => {
-    http.post('/users/login', params)
+  validateLogin = (params = {}) => {
+    http.post('http://localhost:4000/users/login', params)
   }
 
   render() {

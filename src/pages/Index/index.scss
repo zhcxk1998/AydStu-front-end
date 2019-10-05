@@ -14,9 +14,13 @@
   overflow-y: auto;
   position: fixed;
   height: 100%;
+  padding-bottom: 48px;
   background: #fff;
 }
 
 .slider::-webkit-scrollbar {
   display: none;
+}
+.content{
+  background: #fff;
 }

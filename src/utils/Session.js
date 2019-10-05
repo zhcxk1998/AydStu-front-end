@@ -26,7 +26,8 @@ function setCookie(name, value, expire) {
 
 
 export function isAuthenticated() {
-  return getCookie(LOGIN_COOKIE_NAME)
+  return true
+  // return getCookie(LOGIN_COOKIE_NAME)
 }
 
 export function authenticateSuccess(token) {

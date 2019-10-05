@@ -1,9 +1,10 @@
 import React from 'react'
 
 import {
-  Layout, Menu, Icon,
+  Layout,
 } from 'antd';
 import SiderNav from '../../components/SiderNav'
+import ContentMain from '../../components/ContentMain'
 
 import './index.scss'
 
@@ -11,7 +12,7 @@ const {
   Content, Sider, Footer,
 } = Layout;
 
-class Home extends React.Component {
+export default class Index extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -33,11 +34,8 @@ class Home extends React.Component {
           <SiderNav collapsed={collapsed} />
         </Sider>
         <Layout className={`${collapsed ? 'layout-collapsed' : 'layout-unfold'}`}>
-          <Content>
-            {/* <ContentMain /> */}
-            {Array.from({ length: 100 }).map((item) => (
-              <div>1</div>
-            ))}
+          <Content className="content">
+            <ContentMain />
           </Content>
           <Footer>
             <div>Footer</div>
@@ -47,5 +45,3 @@ class Home extends React.Component {
     )
   }
 }
-
-export default Home

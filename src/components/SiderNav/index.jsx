@@ -31,14 +31,16 @@ export default class SiderNav extends React.Component {
 
         <Menu defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
-            <Link to="/login">
+            <Link to="/index">
               <Icon type="pie-chart" />
               <span>个人中心</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Icon type="read" />
-            <span>图书管理</span>
+            <Link to="/index/test">
+              <Icon type="read" />
+              <span>图书管理</span>
+            </Link>
           </Menu.Item>
           <SubMenu
             key="sub1"
