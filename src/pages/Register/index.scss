@@ -1,4 +1,4 @@
-.register-container{
+.register-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
-.register-wrap{
+.register-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,20 +15,20 @@
   border-radius: 20px;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   box-shadow: 0 10px 30px -10px #666;
-}
 
-.logo-container{
-  width: 500px;
-  height: 500px;
-  margin-right: 100px;
-  background: url(http://cdn.algbb.cn/study/banner/6.svg) no-repeat center center;
-  background-size: contain;
-}
+  .logo-container {
+    width: 500px;
+    height: 500px;
+    margin-right: 100px;
+    background: url(http://cdn.algbb.cn/study/banner/6.svg) no-repeat center center;
+    background-size: contain;
+  }
 
-.form-container{
-  width: 500px;
-  padding: 50px 50px 25px 50px;
-  border: #333 1px solid;
-  border-radius: 16px;
-  background: #fff;
+  .form-container {
+    width: 500px;
+    padding: 50px 50px 25px 50px;
+    border: #333 1px solid;
+    border-radius: 16px;
+    background: #fff;
+  }
 }
