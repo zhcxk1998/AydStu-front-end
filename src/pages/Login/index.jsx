@@ -10,7 +10,7 @@ import {
 import { Link } from 'react-router-dom'
 
 import http from '../../utils/fetch'
-import { authenticateSuccess, isAuthenticated } from '../../utils/session'
+import { authenticateSuccess } from '../../utils/session'
 
 import './index.scss'
 
