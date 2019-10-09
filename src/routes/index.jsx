@@ -4,7 +4,8 @@ import {
 } from 'react-router-dom'
 
 import PrivateRoute from '../components/PrivateRoute'
-import { Login, Register, Index } from '../pages'
+import { Login, Register } from '../pages'
+import Index from '../pages/Index/index'
 
 
 const Routes = () => (
