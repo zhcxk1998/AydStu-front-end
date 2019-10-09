@@ -17,7 +17,7 @@ const http = {
           resolve(response.data);
         })
         .catch((error) => {
-          resolve(error.response);
+          resolve(error.response.data);
         });
     });
   },
@@ -36,7 +36,7 @@ const http = {
           resolve(response.data);
         })
         .catch((error) => {
-          resolve(error.response);
+          resolve(error.response.data);
         });
     });
   },
