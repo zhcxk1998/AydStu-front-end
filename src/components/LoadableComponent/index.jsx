@@ -15,7 +15,7 @@ class LoadingPage extends React.Component {
 
   render() {
     return (
-      <div />
+      <div className="load-component" />
     )
   }
 }
