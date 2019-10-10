@@ -55,18 +55,12 @@ export default class SiderNav extends React.Component {
             <Menu.Item key="4">Bill</Menu.Item>
             <Menu.Item key="5">Alex</Menu.Item>
           </SubMenu>
-          <SubMenu
-            key="sub2"
-            title={(
-              <span>
-                <Icon type="apartment" />
-                <span>作品社区</span>
-              </span>
-            )}
-          >
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
-          </SubMenu>
+          <Menu.Item>
+            <Link to="/index/community">
+              <Icon type="apartment" />
+              <span>作品社区</span>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="9">
             <Icon type="play-square" />
             <span>名师微课</span>
