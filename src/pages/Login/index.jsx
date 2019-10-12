@@ -5,15 +5,20 @@ import {
   Checkbox,
   Button,
   Select,
+  message,
 } from 'antd';
 import { Link } from 'react-router-dom'
 
 import http from '../../utils/fetch'
-import { authenticateSuccess, isAuthenticated } from '../../utils/session'
+import { authenticateSuccess } from '../../utils/session'
 
 import './index.scss'
 
 const { Option } = Select
+
+message.config({
+  maxCount: 1,
+})
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -26,7 +31,7 @@ class LoginForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { form, history } = this.props
+    const { form } = this.props
     form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         const {
@@ -35,21 +40,34 @@ class LoginForm extends React.Component {
 
         /* 验证登录信息 */
         this.validateLogin({
-          key, type, username, password,
-        })
-
-        if (remember) {
-          /* 设置cookie */
-          authenticateSuccess(username)
-        }
-
-        history.push('/index')
+          school: key,
+          type,
+          username,
+          password,
+        }, remember)
       }
     });
   };
 
-  validateLogin = (params = {}) => {
-    http.post('http://localhost:4000/users/login', params)
+  validateLogin = async (params = {}, remember = false) => {
+    const { username } = params
+    const { history } = this.props
+    const { status, data } = await http.post('http://localhost:4000/users/login', params)
+    switch (status) {
+      case 'success':
+        if (remember) {
+          /* 设置cookie */
+          authenticateSuccess(username)
+        }
+        message.success(data.msg)
+        history.push('/index')
+        break
+      case 'fail':
+        message.error(data.errMsg)
+        break
+      default:
+        message.warning('请稍后重试！')
+    }
   }
 
   render() {

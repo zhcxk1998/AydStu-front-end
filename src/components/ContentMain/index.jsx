@@ -4,14 +4,11 @@ import {
 } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 
-// import { DashBoard } from '../../pages'
-import DashBoard from '../../pages/DashBoard'
+import { DashBoard, Community, Talk, Course } from '../../pages'
 
 import './index.scss'
 
-const Test = () => (
-  <div>123</div>
-)
+
 
 @withRouter
 class ContentMain extends React.Component {
@@ -19,8 +16,9 @@ class ContentMain extends React.Component {
     return (
       <Switch>
         <PrivateRoute exact path="/index/dashboard" component={DashBoard} />
-        <PrivateRoute exact path="/index/test" component={Test} />
-
+        <PrivateRoute exact path="/index/community" component={Community} />
+        <PrivateRoute exact path="/index/talk" component={Talk} />
+        <PrivateRoute exact path="/index/course" component={Course} />
         <Redirect exact from="/index" to="/index/dashboard" />
       </Switch>
     )

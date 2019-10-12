@@ -52,9 +52,10 @@ export default class DashBoard extends React.Component {
             <Row className="data-content" type="flex" justify="space-between">
               <Col span={7} className="data-wrap">
                 <div className="title">
-                  本周在阅书籍
+                  <Icon type="book" style={{ color: '#66a6ff' }} />
+                  &nbsp;本周在阅书籍
                   <div className="description">
-                    请抓紧时间阅读哦，以免书籍被回收
+                    请抓紧时间阅读哦，以免书籍过期退回
                   </div>
                 </div>
                 {bookList.map((item, index) => {
@@ -75,8 +76,8 @@ export default class DashBoard extends React.Component {
                 })}
                 <div style={{ padding: '0 20px' }}><Button type="primary" block>查看更多</Button></div>
               </Col>
-              <Col span={7} className="data-wrap" />
-              <Col span={7} className="data-wrap" />
+              <Col span={7} className="data-wrap" style={{ background: 'url(http://cdn.algbb.cn/emoji/32.png) no-repeat center center' }} />
+              <Col span={7} className="data-wrap" style={{ background: 'url(http://cdn.algbb.cn/emoji/32.png) no-repeat center center' }} />
             </Row>
           </div>
         </div>
