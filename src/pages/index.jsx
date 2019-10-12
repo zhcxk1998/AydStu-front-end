@@ -5,6 +5,8 @@ const Register = LoadableComponent(() => import('./Register'))
 
 const DashBoard = LoadableComponent(() => import('./DashBoard'))
 const Community = LoadableComponent(() => import('./Community'))
+const Talk = LoadableComponent(() => import('./Talk'))
+const Course = LoadableComponent(() => import('./Course'))
 
 export {
   Login,
@@ -12,4 +14,6 @@ export {
 
   DashBoard,
   Community,
+  Talk,
+  Course,
 }

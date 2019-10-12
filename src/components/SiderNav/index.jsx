@@ -62,12 +62,16 @@ export default class SiderNav extends React.Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="9">
-            <Icon type="play-square" />
-            <span>名师微课</span>
+            <Link to="/index/course">
+              <Icon type="play-square" />
+              <span>名师微课</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="10">
-            <Icon type="edit" />
-            <span>书香奇谈</span>
+            <Link to="/index/talk">
+              <Icon type="edit" />
+              <span>书香奇谈</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="11">
             <Icon type="carry-out" />

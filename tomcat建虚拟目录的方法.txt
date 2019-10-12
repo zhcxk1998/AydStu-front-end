@@ -1,0 +1,56 @@
+»ù±¾ÉÏ£¬Èç¹û›]ÓÐÌØÊâÐèÒª£¬Ö»ÒªÔÚtomcat\webappsµ×ÏÂ½¨Ò»‚€ÙYÁÏŠA£¬ÀýÈçÔÚwebappsµ×ÏÂ½¨Á¢Ò»‚€½ÐnewsµÄÙYÁÏŠA(×îºÃnewsÑeÃæÔÙ½¨Ò»‚€WEB-INFµÄÙYÁÏŠA£¬WEB-INFÙYÁÏŠAÑe×îºÃÔÙ½¨Ò»‚€classesµÄÙYÁÏŠA)¡£ÄãµÄjsp³ÌÊ½¾Í¿ÉÒÔ·ÅÔÚnewsß@‚€ÙYÁÏŠAÑeÃæ£¬²»ß^Òª×¢Òâ£¬²»ÊÇ½¨ºÃÙYÁÏŠA¾ÍÄÜÓÃ£¬ÒòžéTOMCAT²»ÖªµÀß@‚€ÙYÁÏŠA±»½¨Á¢ÁË£¬ËùÒÔÒªŒ¢TOMCATÏÈshutdown£¬È»ááÔÙstartup£¬È»ááÔÚnewsÙYÁÏŠA·ÅÈëjsp³ÌÊ½£¬ÀýÈçindex.jsp£¬È»ááÔÚžgÓ[Æ÷¾WÖ·ÁÐ´òÉÏhttp://localhost:8080/news/index.jsp¿´¿´¾Wí“³öµÃí†á£¡ 
+-------------------------------
+1.µ½ Tomcat µÄ°²×°Ä¿Â¼µÄ webapps Ä¿Â¼£¬¿ÉÒÔ¿´µ½ ROOT£¬examples, tomcat-docs Ö®Àà Tomcat ×Ô´øµÄµÄÄ¿Â¼£» 
+2.ÔÚ webapps Ä¿Â¼ÏÂÐÂ½¨Ò»¸öÄ¿Â¼£¬ÆðÃû½Ð myapp £» 
+3. myapp ÏÂÐÂ½¨Ò»¸öÄ¿Â¼ WEB-INF £¬×¢Òâ£¬Ä¿Â¼Ãû³ÆÊÇÇø·Ö´óÐ¡Ð´µÄ£» 
+4.WEB-INFÏÂÐÂ½¨Ò»¸öÎÄ¼þ web.xml £¬ÄÚÈÝÈçÏÂ£º 
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!DOCTYPE web-app 
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+"http://java.sun.com/dtd/web-app_2_3.dtd"> 
+<web-app> 
+<display-name>My Web Application</display-name> 
+<description> 
+A application for test. 
+</description> 
+</web-app> 
+5.ÔÚmyappÏÂÐÂ½¨Ò»¸ö²âÊÔµÄjspÒ³Ãæ£¬ÎÄ¼þÃûÎªindex.jsp£¬ÎÄ¼þÄÚÈÝÈçÏÂ£º 
+<html><body><center> 
+Now time is: <%=new java.util.Date()%> 
+</center></body></html> 
+6.ÖØÆôTomcat 
+7.´ò¿ªä¯ÀÀÆ÷£¬ÊäÈëhttp://localhost:8080/myapp/index.jsp ¿´µ½µ±Ç°Ê±¼äµÄ»°ËµÃ÷¾Í³É¹¦ÁË¡£ 
+-----------------------------------------
+contextÁ½ÖÖ·½Ê½£º
+D:\Tomcat\conf\Catalina\localhost\ROOT.xml:
+<?xml version='1.0' encoding='utf-8'?>
+<Context displayName="Welcome to Tomcat" docBase="D:/Tomcat/webapps/ROOT" path="" workDir="work\Catalina\localhost\_">
+</Context>
+ÐÂ½¨Aaa.xml£¬Í¬Ê±ÔÚwebapps\½¨Á¢Ä¿Â¼Aaa,×¢Òâ´óÐ¡Ð´Ò»ÖÂ¡£ÐÞ¸ÄxmlÎÄ¼þ¡£ÖØÆôtomcat¼´¿É¡£
+----
+D:\Tomcat\conf\server.xml£º
+  <Engine defaultHost="localhost" name="Catalina">      
+      <Host appBase="webapps" name="localhost">
+        <Logger className="org.apache.catalina.logger.FileLogger" prefix="localhost_log." suffix=".txt" timestamp="true"/>
+      <context path="/aaa" docBase="E:\down\java" debug="0" reloadable="true" ></context>
+      </Host>
+    </Engine>
+---
+D:\Tomcat\webapps\java\WEB-INF\web.xml:
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!DOCTYPE web-app 
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+"http://java.sun.com/dtd/web-app_2_3.dtd"> 
+<web-app> 
+<display-name>My Web Application</display-name> 
+<description> 
+A application for test. 
+</description> 
+</web-app> 
+ÒÔÉÏ¶þ·¨¶¼»áÔÚD:\Tomcat\work\Catalina\localhostÏÂ²úÉú¹¤×÷Ä¿Â¼£¬¼´±àÒëºóµÄservlet´æ·ÅµØ¡£
+Èç¹ûÃ»ÓÐ²úÉú£¬¸ü¸ÄÎÄ¼þÃûÊÔ¼´¿É¡£
+
+¼´£º³ýÁËÔÚHostÔªËØÖÐÇ¶Ì×ContextÔªËØÒÔÍâ£¬ÄãÒ²¿ÉÒÔ½«ËüÃÇ´æ´¢ÔÚµ¥¸öÎÄ¼þÖÐ£¨ÒÔ.xmlÎªºó×º£©£¬·ÅÔÚ$CATALINA_HOME/conf/[enginename]/[hostname]/Ä¿Â¼ÏÂÃæ¡£
+   £¨×¢£ºCatalinaÊÇTomcatµÄ±ð³Æ£©
+
+-----------------------------------------
