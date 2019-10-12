@@ -73,6 +73,12 @@ export default class SiderNav extends React.Component {
             <Icon type="carry-out" />
             <span>阅读任务</span>
           </Menu.Item>
+          <Menu.Item>
+            <Link to="/index/rank">
+              <Icon type="bar-chart" />
+              <span>排行榜</span>
+            </Link>
+          </Menu.Item>
         </Menu>
       </div>
     )
