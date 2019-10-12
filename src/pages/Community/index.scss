@@ -13,6 +13,14 @@
     width: 90%;
     margin: 25px auto;
   }
+  &-switch{
+    color: #666;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px -4px #333;
+  }
 
   &-background {
     position: absolute;
@@ -31,9 +39,11 @@
     z-index: 1;
   }
 }
-.border-style{
-  border-bottom:1px #fff;
-  box-shadow:1px 1px 5px #333;
-  -webkit-box-shadow:1px 1px 5px #333;
-  -moz-box-shadow:1px 1px 5px #333;
-}
+//.border-style{
+//  border-bottom:1px #fff;
+//  box-shadow:1px 1px 5px #333;
+//  -webkit-box-shadow:1px 1px 5px #333;
+//  -moz-box-shadow:1px 1px 5px #333;
+//}
+
+
