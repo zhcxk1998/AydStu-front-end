@@ -1,0 +1,39 @@
+.book{
+  &-conter{
+    position: relative;
+    height: 800px;
+  }
+  &-mid{
+    height: 80px;
+  }
+  &-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    border-radius: 50%;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    transform: translate(0, -150px) scale(1.5, 1.5);
+    z-index: 0;
+  }
+&-show{
+
+  .count{
+    height: 250px;
+    width: 350px;
+    color: #666;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px -4px #333;
+    padding-top: 30px;
+    margin-top: 10px;
+  }
+  .button{
+    color: #a1c4fd;
+  }
+  margin-bottom: 10px;
+}
+}

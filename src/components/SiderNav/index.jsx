@@ -37,7 +37,7 @@ export default class SiderNav extends React.Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="/index/test">
+            <Link to="/index/bookmanage">
               <Icon type="read" />
               <span>图书管理</span>
             </Link>
