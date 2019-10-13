@@ -8,6 +8,7 @@ const Community = LoadableComponent(() => import('./Community'))
 const Rank = LoadableComponent(() => import('./Rank'))
 const Talk = LoadableComponent(() => import('./Talk'))
 const Course = LoadableComponent(() => import('./Course'))
+const ReadingTask = LoadableComponent(() => import('./ReadingTask'))
 
 export {
   Login,
@@ -18,4 +19,5 @@ export {
   Rank,
   Talk,
   Course,
+  ReadingTask,
 }

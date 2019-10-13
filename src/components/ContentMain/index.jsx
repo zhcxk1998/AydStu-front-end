@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 
-import { DashBoard, Community, Talk, Course, Rank } from '../../pages'
+import { DashBoard, Community, Talk, Course, Rank,ReadingTask } from '../../pages'
 
 import './index.scss'
 
@@ -18,6 +18,7 @@ class ContentMain extends React.Component {
         <PrivateRoute exact path="/index/rank" component={Rank} />
         <PrivateRoute exact path="/index/talk" component={Talk} />
         <PrivateRoute exact path="/index/course" component={Course} />
+        <PrivateRoute exact path="/index/readingtask" component={ReadingTask} />
         <Redirect exact from="/index" to="/index/dashboard" />
       </Switch>
     )
