@@ -12,7 +12,7 @@ const book = [
   {
     title: 'book 2',
     img: <img alt="example" width="150px"height="150px" src="http://cdn.algbb.cn/emoji/25.png" />,
-    author:"ple",
+    author:"pleple",
   },
   {
     title: 'book 3',
