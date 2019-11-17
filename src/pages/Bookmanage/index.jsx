@@ -54,8 +54,8 @@ export default class Bookmanage extends React.Component {
         </div>
           <div style={{ marginTop: 20 }}>
             <RadioGroup defaultValue="p" className="book-top">
-              <Radio.Button value="recommend_book" >推荐书籍</Radio.Button>
-              <Radio.Button value="all_book">全部书籍</Radio.Button>
+              <Radio.Button id="recommend_book" value="recommend_book" >推荐书籍</Radio.Button>
+              <Radio.Button id="all_book" value="all_book">全部书籍</Radio.Button>
             </RadioGroup>
           </div>
           <div className="book-mid">
@@ -67,7 +67,7 @@ export default class Bookmanage extends React.Component {
                   const { title, img, author } = item;
                   return (
                     <Col span={8} className="count" key={index}>
-                      <div className="img"><a href="#">{img}</a></div>
+                      <div id="img" className="img"><a href="#">{img}</a></div>
                       <div className="message">
                         {title}
                         <br />
@@ -80,7 +80,7 @@ export default class Bookmanage extends React.Component {
               }
             </Row>
             <RadioGroup defaultValue="p" className="book-top">
-              <Radio.Button value="question" >答题闯关</Radio.Button>
+              <Radio.Button id="question" value="question" >答题闯关</Radio.Button>
             </RadioGroup>
           </div>
         </div>
