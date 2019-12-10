@@ -38,7 +38,7 @@ export default class Index extends React.Component {
             <ContentMain />
           </Content>
           <Footer>
-            <div>Footer</div>
+            <div className="footer">粤ICP备 123321123号</div>
           </Footer>
         </Layout>
       </Layout>
