@@ -29,7 +29,7 @@ export default class Index extends React.Component {
   render() {
     const { collapsed } = this.state
     return (
-      <Layout hasSider>
+      <Layout hasSider style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse} theme="light" className="slider">
           <SiderNav collapsed={collapsed} />
         </Sider>
