@@ -21,7 +21,7 @@ export default class SiderNav extends React.Component {
             </div>
             <div className="nav-info">
               <img src="http://cdn.algbb.cn/emoji/32.png" alt="" />
-              <div className="nickname">Tom Richard</div>
+              <div className="nickname">BB小天使</div>
               <div className="description">A student of BNUZ.</div>
             </div>
           </div>
