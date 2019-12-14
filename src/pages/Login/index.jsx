@@ -76,6 +76,7 @@ class LoginForm extends React.Component {
 
     return (
       <div className="login-container">
+        <div className="login-title">欢迎来到爱阅读系统学生端V1.0</div>
         <div className="login-wrap">
           <div className="logo-container" />
           <Form onSubmit={this.handleSubmit} className="form-container">
