@@ -410,11 +410,7 @@ class Community extends React.Component {
                 <Card
                   hoverable
                   className="data"
-                  actions={[<Icon
-                    type="info-circle"
-                    key="ellipsis"
-                    onClick={() => { this.showDraw(); this.selectedBook(item.id); }}
-                  />]}
+                  actions={[<Button type="primary" onClick={() => { this.showDraw(); this.selectedBook(item.id); }}>社区</Button>]}
                   style={{ width: 280, marginTop: 30 }}
                   cover={item.cover}
                 >
@@ -426,12 +422,12 @@ class Community extends React.Component {
         </div>
         <Drawer
           id="topDraw"
-          title="查看书评"
+          title="作品社区 书评区"
           placement="left"
           closable
           onClose={this.closeDraw}
           visible={this.state.drawVisible}
-          width={700}
+          width={900}
         >
           <div>
             {comments.length > 0 && <CommentList comments={comments} />}
