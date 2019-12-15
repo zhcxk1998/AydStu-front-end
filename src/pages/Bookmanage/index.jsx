@@ -160,10 +160,14 @@ export default class Bookmanage extends React.Component {
                     <Col span={8} className="count" key={index}>
                       <div id="img" className="img"><a href="#">{img}</a></div>
                       <div className="message">
+                        点击图片返回个人中心
+                        <br />
                         {title}
                         <br />
                         作者：
                         {author}
+                        <br />
+                        点击省略号查看图书详细信息
                         <List.Item>
                           <Card
                               hoverable
@@ -205,10 +209,14 @@ export default class Bookmanage extends React.Component {
                       <Col span={8} className="count" key={index}>
                         <div id="img" className="img"><a href="#">{img}</a></div>
                         <div className="message">
+                          点击图片返回个人中心
+                          <br />
                           {title}
                           <br />
                           作者：
                           {author}
+                          <br />
+                          点击省略号查看图书详细信息
                           <List.Item>
                             <Card
                                 hoverable
