@@ -1,159 +1,206 @@
 import React from 'react'
 import {
-  Form,
-  Input,
-  Button,
-  Select,
-} from 'antd';
+  Button, Tooltip, Modal, List,
+} from 'antd'
 import { Link } from 'react-router-dom'
-
-import http from '../../utils/fetch'
-import { authenticateSuccess, isAuthenticated } from '../../utils/session'
-
 import './index.scss'
 
-const { Option } = Select
-
-class RegisterForm extends React.Component {
+export default class Course extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    /**
+     * 本页面初始数据
+     * @type {{visible: boolean, courseList: *[]}}
+     */
     this.state = {
-      confirmDirty: false,
+      visible: false,
+      collectionList: [],
+      courseList: [
+        {
+          title: '微课1',
+          description: '这是微课1的简介',
+          link: '/',
+          isDisabled: false,
+        },
+        {
+          title: '微课2',
+          description: '这是微课2的简介',
+          link: '/',
+          isDisabled: false,
+        },
+        {
+          title: '微课3',
+          description: '这是微课3的简介',
+          link: '/',
+          isDisabled: false,
+        },
+        {
+          title: '微课4',
+          description: '这是微课4的简介',
+          link: '/',
+          isDisabled: false,
+        },
+        {
+          title: '微课5',
+          description: '这是微课5的简介',
+          link: '/',
+          isDisabled: false,
+        },
+        {
+          title: '微课6',
+          description: '这是微课6的简介',
+          link: '/',
+          isDisabled: false,
+        },
+        {
+          title: '微课7',
+          description: '这是微课7的简介',
+          link: '/',
+          isDisabled: false,
+        },
+      ],
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  componentDidMount() {
+    const timer = setInterval(() => {
+      let arr = [];
+      this.state.courseList.map((item) => {
+        const { isDisabled } = item;
+        if (isDisabled) {
+          arr = [...arr, item];
+        }
+      });
+      this.setState({
+        collectionList: arr,
+      });
+    }, 1000);
+  }
 
-    const { form } = this.props
-    form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        const {
-          school: { key }, type, username, password,
-        } = values
-
-        /* 验证登录信息 */
-        this.validateRegister({
-          key, type, username, password,
-        })
-      }
+  /**
+   * 加入收藏后按钮变不可用
+   * @param index
+   */
+  changeIsDisabled = (index) => {
+    const arr = this.state.courseList;
+    arr[index].isDisabled = true;
+    this.setState({
+      courseList: arr,
     });
   };
 
-  handleConfirmBlur = (e) => {
-    const { value } = e.target;
-    const { confirmDirty } = this.state
-    this.setState({ confirmDirty: confirmDirty || !!value });
+  /**
+   * 弹窗open
+   */
+  showModal = () => {
+    this.setState({
+      visible: true,
+    })
   };
 
-  compareToFirstPassword = (rule, value, callback) => {
-    const { form } = this.props;
-    if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!');
-    } else {
-      callback();
+  /**
+   * 弹窗close
+   */
+  hideModal = () => {
+    this.setState({
+      visible: false,
+    })
+  };
+
+  /**
+   * 弹窗按ok后
+   */
+  changeInfo = () => {
+    this.setState({
+      visible: false,
+      collectionList: this.state.collectionList,
+      courseList: this.state.courseList,
+    });
+  };
+
+  /**
+   * 删除收藏
+   */
+  deleteCollection = (index) => {
+    const arr1 = this.state.collectionList;
+    const arr2 = this.state.courseList;
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i].title === index) arr1.slice(i, 1);
     }
-  };
-
-  validateToNextPassword = (rule, value, callback) => {
-    const { form } = this.props;
-    const { confirmDirty } = this.state
-    if (value && confirmDirty) {
-      form.validateFields(['confirm'], { force: true });
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr2[j].title === index) arr2[j].isDisabled = false;
     }
-    callback();
+    this.setState({
+      collectionList: arr1,
+      courseList: arr2,
+    })
   };
-
-  validatevalidateRegister = (params = {}) => {
-    http.put('http://localhost:4000/users/register', params)
-  }
 
   render() {
-    const { form } = this.props
-    const { getFieldDecorator } = form;
-
+    const courseArr = this.state.courseList;
     return (
-      <div className="register-container">
-        <div className="register-wrap">
-          <div className="logo-container" />
-          <Form onSubmit={this.handleSubmit} className="form-container">
-            <Form.Item>
-              {getFieldDecorator('school', {
-                rules: [
-                  { required: true, message: '请选择学校信息' },
-                ],
-              })(
-                <Select
-                  placeholder="请选择您的学校"
-                  labelInValue
-                >
-                  <Option value="bnuz">北京师范大学珠海分校</Option>
-                  <Option value="bitz">北京理工大学珠海分校</Option>
-                  <Option value="jluz">吉林大学珠海学院</Option>
-                </Select>,
-              )}
-            </Form.Item>
-            <Form.Item>
-              {getFieldDecorator('type', {
-                rules: [
-                  { required: true, message: '请选择登录类型!' },
-                ],
-              })(
-                <Select
-                  placeholder="请选择登录类型"
-                >
-                  <Option value="teacher">教师</Option>
-                  <Option value="student">学生</Option>
-                  <Option value="admin">管理员</Option>
-                </Select>,
-              )}
-            </Form.Item>
-            <Form.Item>
-              {getFieldDecorator('username', {
-                rules: [{ required: true, message: '请输入用户名!', whitespace: true }],
-              })(<Input autoComplete="off" placeholder="请输入用户名" />)}
-            </Form.Item>
-            <Form.Item hasFeedback>
-              {getFieldDecorator('password', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请输入密码!',
-                  },
-                  {
-                    validator: this.validateToNextPassword,
-                  },
-                ],
-              })(<Input.Password placeholder="请输入密码" />)}
-            </Form.Item>
-            <Form.Item hasFeedback>
-              {getFieldDecorator('confirm', {
-                rules: [
-                  {
-                    required: true,
-                    message: '请确认密码!',
-                  },
-                  {
-                    validator: this.compareToFirstPassword,
-                  },
-                ],
-              })(<Input.Password onBlur={this.handleConfirmBlur} placeholder="请确认密码" />)}
-            </Form.Item>
-            <Form.Item>
-              <Link style={{ float: 'right' }} to="/login">已有用户？立即登录</Link>
-            </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                注册
-              </Button>
-            </Form.Item>
-          </Form>
+      <div className="course-container">
+        <div className="course-background" />
+        <div className="course-wrap">
+          <div className="course-header">
+            <div className="description">
+              <div className="title">名师微课</div>
+              立即观看名师的小课堂吧！
+            </div>
+            <Button type="primary" size="large" shape="round" onClick={this.showModal}>我的收藏</Button>
+            <Modal
+              title="我的收藏"
+              visible={this.state.visible}
+              onOk={this.changeInfo}
+              onCancel={this.hideModal}
+              okText="确认"
+              cancelText="取消"
+            >
+              <List
+                size="default"
+                dataSource={this.state.collectionList}
+                renderItem={(item) => (
+                  <List.Item className="model-list">
+                    {item.title}
+                    <Button type="danger" size="default" className="del-collection" onClick={() => this.deleteCollection(item.title)}>删除收藏</Button>
+                  </List.Item>
+                )}
+              />
+            </Modal>
+          </div>
+          <div className="course-list">
+            {
+              courseArr.map((item, index) => {
+                const { title, description, link } = item;
+                return (
+                  <div className="course-view" key={index}>
+                    <div className="course-info">
+                      <div className="title">{title}</div>
+                      <span className="description">{description}</span>
+                      <span className="btn">
+                        <Tooltip title="暂无视频，点击前往主页">
+                          <Link className="link" to={link}>
+                            前往观看
+                          </Link>
+                        </Tooltip>
+                        <Button
+                          type="primary"
+                          size="small"
+                          shape="round"
+                          disabled={this.state.courseList[index].isDisabled}
+                          onClick={() => this.changeIsDisabled(index)}
+                        >
+                          加入收藏
+                        </Button>
+                      </span>
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       </div>
-    );
+    )
   }
 }
-
-const Register = Form.create({ name: 'registerForm' })(RegisterForm);
-
-export default Register
