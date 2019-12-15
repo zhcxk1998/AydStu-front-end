@@ -54,7 +54,7 @@ class RegisterForm extends React.Component {
   compareToFirstPassword = (rule, value, callback) => {
     const { form } = this.props;
     if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!');
+      callback('两次密码输入不正确!');
     } else {
       callback();
     }
@@ -92,6 +92,7 @@ class RegisterForm extends React.Component {
 
     return (
       <div className="register-container">
+        <div className="register-title">欢迎来到爱阅读系统学生端V1.0</div>
         <div className="register-wrap">
           <div className="logo-container" />
           <Form onSubmit={this.handleSubmit} className="form-container">
