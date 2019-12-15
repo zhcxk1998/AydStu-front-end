@@ -1,5 +1,14 @@
 .shopping {
+  position: relative;
   padding: 20px;
+
+  .score{
+    position: absolute;
+    top: 30px;
+    right: 130px;
+    color: #333;
+    font-size: 24px;
+  }
 
   &__container {
     display: flex;
@@ -51,11 +60,17 @@
         }
 
         .btn {
+          cursor: pointer;
           margin-left: auto;
           padding: 5px 8px;
           color: #fff;
           border-radius: 20px;
           background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+          transition: all .3s ease;
+
+          &:hover{
+            transform: translateY(-5px);
+          }
         }
       }
     }

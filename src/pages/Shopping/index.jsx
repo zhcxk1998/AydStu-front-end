@@ -32,6 +32,7 @@ export default class Shopping extends Component {
 
     return (
       <div className="shopping">
+        <div className="score">我的积分: 1314</div>
         <Tabs defaultActiveKey="1">
           <TabPane tab="所有商品" key="1">
             <div className="shopping__container">
