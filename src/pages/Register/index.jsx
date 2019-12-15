@@ -4,6 +4,7 @@ import {
   Input,
   Button,
   Select,
+  message,
 } from 'antd';
 import { Link } from 'react-router-dom'
 
@@ -13,6 +14,10 @@ import { authenticateSuccess, isAuthenticated } from '../../utils/session'
 import './index.scss'
 
 const { Option } = Select
+
+message.config({
+  maxCount: 1,
+})
 
 class RegisterForm extends React.Component {
   constructor(props) {
@@ -34,7 +39,7 @@ class RegisterForm extends React.Component {
 
         /* 验证登录信息 */
         this.validateRegister({
-          key, type, username, password,
+          username, password,
         })
       }
     });
@@ -64,9 +69,22 @@ class RegisterForm extends React.Component {
     callback();
   };
 
-  validatevalidateRegister = (params = {}) => {
-    http.put('http://localhost:4000/users/register', params)
+  validateRegister = async (params = {}) => {
+    const { history } = this.props
+    const { status, data } = await http.post('http://localhost:4000/users/register', params)
+    switch (status) {
+      case 'success':
+        message.success(data.msg)
+        history.push('/index')
+        break
+      case 'fail':
+        message.error(data.errMsg)
+        break
+      default:
+        message.warning('请稍后重试！')
+    }
   }
+
 
   render() {
     const { form } = this.props
