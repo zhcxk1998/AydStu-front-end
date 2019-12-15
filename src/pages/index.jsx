@@ -10,6 +10,7 @@ const Talk = LoadableComponent(() => import('./Talk'))
 const Course = LoadableComponent(() => import('./Course'))
 const ReadingTask = LoadableComponent(() => import('./ReadingTask'))
 const Bookmanage = LoadableComponent(() => import('./Bookmanage'))
+const Shopping = LoadableComponent(() => import('./Shopping'))
 
 export {
   Login,
@@ -22,4 +23,5 @@ export {
   Course,
   ReadingTask,
   Bookmanage,
+  Shopping,
 }

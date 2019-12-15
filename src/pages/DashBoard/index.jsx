@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Button, Row, Col, Icon,
+  Button, Row, Col, Icon, Modal, Form, Input, Radio,
 } from 'antd'
 import { Link } from 'react-router-dom'
 import echarts from 'echarts'
@@ -23,12 +23,15 @@ const bookList = [
   },
 ]
 
-export default class DashBoard extends Component {
+class DashBoard extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      isModalOpened: false,
     }
+    this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.handleConfirmClick = this.handleConfirmClick.bind(this)
+    this.handleCancelClick = this.handleCancelClick.bind(this)
   }
 
   componentDidMount() {
@@ -74,9 +77,60 @@ export default class DashBoard extends Component {
     myCharts.setOption(option);
   }
 
+  handleButtonClick() {
+    this.setState({
+      isModalOpened: true,
+    })
+  }
+
+  handleConfirmClick() {
+    this.setState({
+      isModalOpened: false,
+    })
+  }
+
+  handleCancelClick() {
+    this.setState({
+      isModalOpened: false,
+    })
+  }
+
   render() {
+    const { isModalOpened } = this.state
+    const { form } = this.props
+    const { getFieldDecorator } = form;
     return (
       <div className="dashboard-container">
+        <Modal
+          title="修改个人信息"
+          visible={isModalOpened}
+          onOk={this.handleConfirmClick}
+          onCancel={this.handleCancelClick}
+        >
+          <Form layout="vertical">
+            <Form.Item label="姓名">
+              {getFieldDecorator('姓名', {
+                rules: [{ message: '请输入姓名！' }],
+                initialValue: 'BB小天使',
+              })(<Input />)}
+            </Form.Item>
+            <Form.Item label="学号">
+              {getFieldDecorator('学号', {
+                initialValue: '1701030025',
+              })(<Input type="textarea" />)}
+            </Form.Item>
+            <Form.Item label="性别" className="collection-create-form_last-form-item">
+              {getFieldDecorator('性别', {
+                initialValue: '男',
+              })(
+                <Radio.Group>
+                  <Radio value="男">男</Radio>
+                  <Radio value="女">女</Radio>
+                </Radio.Group>,
+              )}
+            </Form.Item>
+          </Form>
+        </Modal>
         <div className="dashboard-background" />
         <div className="dashboard-wrap">
           <div className="overview-container">
@@ -85,7 +139,7 @@ export default class DashBoard extends Component {
                 <div className="title">欢迎回来 BB小天使</div>
                 这是你近期的状态概览，快点来看一下吧！
               </div>
-              <Button type="primary" size="large" shape="round">修改个人资料</Button>
+              <Button type="primary" size="large" shape="round" onClick={this.handleButtonClick}>修改个人资料</Button>
             </div>
             <Row className="overview-content" type="flex" justify="space-between">
               {overviewList.map((item, index) => {
@@ -144,7 +198,50 @@ export default class DashBoard extends Component {
                 </div>
                 <div className="charts__wrap" id="myCharts" />
               </Col>
-              <Col span={7} className="data-wrap" />
+              <Col span={7} className="data-wrap">
+                <div className="title">
+                  <Icon type="carry-out" style={{ color: '#66a6ff' }} />
+                  &nbsp;阅读任务列表
+                  <div className="description">
+                    以下是您将要完成的阅读任务，请抓紧时间哟
+                  </div>
+                </div>
+                <div className="task__container">
+                  <div className="task__wrap">
+                    <div className="id">1</div>
+                    <div className="info">
+                      <div className="name">阅读三本书籍 (1/3)</div>
+                      <div className="price">积分 +3</div>
+                    </div>
+                    <button className="btn" type="button">去完成</button>
+                  </div>
+                  <div className="task__wrap">
+                    <div className="id">2</div>
+                    <div className="info">
+                      <div className="name">发表两次书评 (0/2)</div>
+                      <div className="price">积分 +2</div>
+                    </div>
+                    <button className="btn" type="button">去完成</button>
+                  </div>
+                  <div className="task__wrap">
+                    <div className="id">3</div>
+                    <div className="info">
+                      <div className="name">观看三小时名师微课 (2/3)</div>
+                      <div className="price">积分 +5</div>
+                    </div>
+                    <button className="btn" type="button">去完成</button>
+                  </div>
+                  <div className="task__wrap" style={{ borderBottom: 0 }}>
+                    <div className="id">4</div>
+                    <div className="info">
+                      <div className="name">完成一次答题闯关 (0/1)</div>
+                      <div className="price">积分 +3</div>
+                    </div>
+                    <button className="btn" type="button">去完成</button>
+                  </div>
+                  <div style={{ marginTop: '15px', padding: '0 20px' }}><Button type="primary" block>查看更多</Button></div>
+                </div>
+              </Col>
             </Row>
           </div>
         </div>
@@ -152,3 +249,6 @@ export default class DashBoard extends Component {
     )
   }
 }
+
+
+export default Form.create({ name: 'index' })(DashBoard)
